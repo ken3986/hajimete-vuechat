@@ -19,7 +19,8 @@ export default {
 
   methods: {
     async getData() {
-      const result = await axios.get('https://netlify-cors-test-ken3986.netlify.app/.netlify/functions/app');
+      // const result = await axios.get('https://netlify-cors-test-ken3986.netlify.app/.netlify/functions/app');
+      const result = await axios.get('https://hajimete-vuechat-api-develop.netlify.app/.netlify/functions/app');
       console.log(result);
     }
   }
