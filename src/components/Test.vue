@@ -36,6 +36,8 @@ export default {
       console.log(result);
       result = await axios.get('https://hajimete-vuechat-api-develop.netlify.app/.netlify/functions/express/test2');
       console.log(result);
+      result = await axios.get('https://hajimete-vuechat-api-develop.netlify.app/.netlify/functions/express/test3');
+      console.log(result);
       result = await axios.get('https://hajimete-vuechat-api-develop.netlify.app/.netlify/functions/express/users');
       console.log(result);
 
