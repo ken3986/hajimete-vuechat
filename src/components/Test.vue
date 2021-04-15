@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>Test page</p>
+    <p>{{$store.state.test}}</p>
   </div>
 </template>
 
@@ -14,7 +15,7 @@ export default {
   },
 
   mounted() {
-    this.getData();
+    // this.getData();
   },
 
   methods: {
@@ -41,7 +42,14 @@ export default {
       result = await axios.get('https://hajimete-vuechat-api-develop.netlify.app/.netlify/functions/express/users');
       console.log(result);
 
+    },
+    getStore () {
+      // this.$store.
     }
   }
 }
 </script>
+
+<style>
+
+</style>

@@ -1,0 +1,12 @@
+.view
+  .channel
+    ul
+      li(v-for="(channel) in channels")
+        router-link(:to="{name: 'channel', params: {cname: channel}}") {{ channel }}
+  .messages
+    ul
+      li(v-for="(message) in messages")
+        .message {{ message.body }}
+  .form
+    input(type="text" v-model="input_message")
+    input(type="button" value="SEND" @click="sendMessage")
