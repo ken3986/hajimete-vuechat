@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 export default {
   data() {
     return {
@@ -19,8 +19,8 @@ export default {
 
   methods: {
     async getData() {
-      const result = await axios.get();
-      console.log(result);
+      // const result = await axios.get();
+      // console.log(result);
     }
   }
 }
