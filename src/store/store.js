@@ -23,9 +23,9 @@ const mutations = {
   getTest(state, testMessage) {
     state.test = testMessage;
   },
-  setMessage(state, message) {
-    state.messages.push(message);
-  },
+  // setMessage(state, message) {
+  //   state.messages.push(message);
+  // },
 
   getChannels(state, channels) {
     state.channels = channels;
@@ -36,7 +36,11 @@ const mutations = {
   }
 }
 
-const get_message_path = cname => `http://localhost:9000/.netlify/functions/express/channels/${cname}/messages`;
+// const get_message_path = cname => `http://localhost:9000/.netlify/functions/express/channels/${cname}/messages`;
+// const get_message_path = cname => `https://hajimete-vuechat-api-develop.netlify.app/.netlify/functions/express/channels/${cname}/messages`;
+// require('dotenv').config({path: __dirname + '/.env'});
+
+const get_message_path = cname => process.env.VUE_APP_API_URL + `/channels/${cname}/messages`;
 
 const fetchGetMessages = async(cname) => {
   const result = await axios.get(get_message_path(cname));
@@ -49,12 +53,12 @@ const actions = {
     context.commit('getTest', 'testtest');
   },
 
-  setMessage (context, message) {
-    context.commit('setMessage', message);
-  },
+  // setMessage (context, message) {
+  //   context.commit('setMessage', message);
+  // },
 
   async getChannels(context) {
-    const result = await axios.get('https://hajimete-vuechat-api-develop.netlify.app/.netlify/functions/express/channels');
+    const result = await axios.get(process.env.VUE_APP_API_URL + '/channels');
     const channels = result.data.channels;
     context.commit('getChannels', channels);
   },
@@ -64,9 +68,15 @@ const actions = {
     context.commit('setMessages', messages);
   },
 
-  // async postMessage(context, message) {
-  //   await axios.post('')
-  // }
+  async postMessage(context, {cname, message}) {
+    const result = await axios.post(get_message_path(cname), {
+      'body': message
+    });
+    if(result.status == 201) {
+      const messages = await fetchGetMessages(cname);
+      context.commit('setMessages', messages);
+    }
+  }
 }
 
 export default new Vuex.Store({

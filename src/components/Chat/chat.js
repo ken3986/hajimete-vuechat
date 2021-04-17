@@ -26,9 +26,10 @@ export default {
 
   methods: {
     ...mapActions([
-      'setMessage',
+      // 'setMessage',
       'getChannels',
       'getMessages',
+      'postMessage',
       'getTest',
     ]),
 
@@ -37,9 +38,9 @@ export default {
       // console.log(result);
     },
 
-    async sendMessage () {
+    async sendMessage() {
       // this.messages.push(this.input_message);
-      this.setMessage(this.input_message);
+      this.postMessage({"cname": this.$route.params.cname, "message": this.input_message});
       this.input_message = '';
     }
 
