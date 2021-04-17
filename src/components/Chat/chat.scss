@@ -1,6 +1,41 @@
 ul {
   list-style-type: none;
-  li {
-    background-color: #eee;
-  }
+  padding: 0;
+}
+
+.el-header {
+  border-bottom: 1px solid #000;
+}
+
+.el-header, .el-footer {
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+}
+
+.el-aside {
+  background-color: #4e3e4e;
+  text-align: center;
+  width: 100px!important;
+}
+
+.el-aside a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.el-main {
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+}
+
+.el-container {
+  height: 100vh;
+}
+
+.el-input {
+  width: 50%;
 }

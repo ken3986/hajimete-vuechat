@@ -3,7 +3,14 @@ import {
   mapActions
  } from 'vuex';
 
+//  子コンポーネント
+import MessageList from '../MessageList'
+
 export default {
+  components: {
+    'message-list': MessageList,
+  },
+
   data() {
     return {
       input_message: ''
