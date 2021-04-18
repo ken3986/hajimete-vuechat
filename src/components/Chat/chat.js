@@ -1,4 +1,8 @@
 import {
+  GET_CHANNELS
+} from '../../store/mutation-types';
+
+import {
   mapGetters,
   mapActions
  } from 'vuex';
@@ -25,29 +29,21 @@ export default {
   },
 
   mounted() {
-    this.getData();
-    this.getChannels();
-    this.getMessages(this.$route.params.cname);
+    this.GET_CHANNELS();
+    this.GET_MESSAGES(this.$route.params.cname);
     this.getTest();
   },
 
   methods: {
     ...mapActions([
-      // 'setMessage',
-      'getChannels',
-      'getMessages',
-      'postMessage',
+      GET_CHANNELS,
+      'GET_MESSAGES',
+      'POST_MESSAGE',
       'getTest',
     ]),
 
-    async getData() {
-      // const result = await axios.get();
-      // console.log(result);
-    },
-
     async sendMessage() {
-      // this.messages.push(this.input_message);
-      this.postMessage({"cname": this.$route.params.cname, "message": this.input_message});
+      this.POST_MESSAGE({"cname": this.$route.params.cname, "message": this.input_message});
       this.input_message = '';
     }
 
@@ -55,7 +51,7 @@ export default {
 
   watch: {
     $route() {
-      this.getMessages(this.$route.params.cname);
+      this.GET_MESSAGES(this.$route.params.cname);
     }
   }
 }
