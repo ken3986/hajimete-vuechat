@@ -11,12 +11,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    beforeEnter: to => {
+    beforeEnter: (to, from, next) => {
       const redirect = to.query.redirect
       if(redirect) {
-        return {
+        next({
           path: `/${redirect}`
-        }
+        });
       }
     }
   },
